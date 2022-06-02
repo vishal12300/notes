@@ -3,7 +3,9 @@
 Computer forensics is an essential field of cyber security that involves gathering evidence of activities performed on computers. It is a part of the wider Digital Forensics field, which deals with forensic analysis of all types of digital devices, including recovering, examining, and analyzing data found in digital devices. The applications of digital and computer forensics are wide-ranging, from the legal sphere, where it is used to support or refute a hypothesis in a civil or criminal case, to the private sphere, where it helps in internal corporate investigations and incident and intrusion analysis.
 
 ## Windows Registry Forensics Cheastsheet PDF
-Windows Forensics Cheatsheet.pdf
+[Windows Forensics Cheatsheet](https://github.com/vishal12300/notes/blob/main/Windows%20Forensics%20Cheatsheet.pdf)
+
+
 ## Forensic Artifacts:
 
 When performing forensic analysis, you will often hear the word 'artifact'. Forensic artifacts are essential pieces of information that provide evidence of human activity. For example, during the investigation of a crime scene, fingerprints, a broken button of a shirt or coat, the tools used to perform the crime are all considered forensic artifacts. All of these artifacts are combined to recreate the story of how the crime was committed. 
