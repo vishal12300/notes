@@ -2,7 +2,8 @@
 
 Computer forensics is an essential field of cyber security that involves gathering evidence of activities performed on computers. It is a part of the wider Digital Forensics field, which deals with forensic analysis of all types of digital devices, including recovering, examining, and analyzing data found in digital devices. The applications of digital and computer forensics are wide-ranging, from the legal sphere, where it is used to support or refute a hypothesis in a civil or criminal case, to the private sphere, where it helps in internal corporate investigations and incident and intrusion analysis.
 
-
+## Windows Registry Forensics Cheastsheet PDF
+Windows Forensics Cheatsheet.pdf
 ## Forensic Artifacts:
 
 When performing forensic analysis, you will often hear the word 'artifact'. Forensic artifacts are essential pieces of information that provide evidence of human activity. For example, during the investigation of a crime scene, fingerprints, a broken button of a shirt or coat, the tools used to perform the crime are all considered forensic artifacts. All of these artifacts are combined to recreate the story of how the crime was committed. 
@@ -108,6 +109,59 @@ Another way to identify a user's recent activity is by looking at the paths type
 ```
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\WordWheelQuery
+```
+
+## UserAssist:
+Windows keeps track of applications launched by the user using Windows Explorer for statistical purposes in the User Assist registry keys. These keys contain information about the programs launched, the time of their launch, and the number of times they were executed. However, programs that were run using the command line can't be found in the User Assist keys. The User Assist key is present in the NTUSER hive, mapped to each user's GUID. We can find it at the following location:
+```
+NTUSER.DAT\Software\Microsoft\Windows\Currentversion\Explorer\UserAssist\{GUID}\Count
+```
+
+## ShimCache:
+ShimCache is a mechanism used to keep track of application compatibility with the OS and tracks all applications launched on the machine. Its main purpose in Windows is to ensure backward compatibility of applications. It is also called Application Compatibility Cache (AppCompatCache). It is located in the following location in the SYSTEM hive:
+```
+SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache
+```
+
+## AmCache:
+The AmCache hive is an artifact related to ShimCache. This performs a similar function to ShimCache, and stores additional data related to program executions. This data includes execution path, installation, execution and deletion times, and SHA1 hashes of the executed programs. This hive is located in the file system at:
+```
+C:\Windows\appcompat\Programs\Amcache.hve
+```
+
+## BAM/DAM:
+Background Activity Monitor or BAM keeps a tab on the activity of background applications. Similar Desktop Activity Moderator or DAM is a part of Microsoft Windows that optimizes the power consumption of the device. Both of these are a part of the Modern Standby system in Microsoft Windows.
+In the Windows registry, the following locations contain information related to BAM and DAM. This location contains information about last run programs, their full paths, and last execution time.
+```
+SYSTEM\CurrentControlSet\Services\bam\UserSettings\{SID}
+SYSTEM\CurrentControlSet\Services\dam\UserSettings\{SID}
+```
+
+##  External Devices/USB device forensics
+When performing forensics on a machine, often the need arises to identify if any USB or removable drives were attached to the machine. If so, any information related to those devices is important for a forensic investigator. In this task, we will go through the different ways to find information on connected devices and the drives on a system using the registry.
+The following locations keep track of USB keys plugged into a system. These locations store the vendor id, product id, and version of the USB device plugged in and can be used to identify unique devices. These locations also store the time the devices were plugged into the system.
+```
+SYSTEM\CurrentControlSet\Enum\USBSTOR
+SYSTEM\CurrentControlSet\Enum\USB
+```
+
+## First/Last Times:
+Similarly, the following registry key tracks the first time the device was connected, the last time it was connected and the last time the device was removed from the system.
+```
+SYSTEM\CurrentControlSet\Enum\USBSTOR\Ven_Prod_Version\USBSerial#\Properties\{83da6326-97a6-4088-9453-a19231573b29}\####
+```
+In this key, the #### sign can be replaced by the following digits to get the required information:
+
+| Value |	Information          |
+|-------|----------------------|
+| 0064	|First Connection time |
+| 0066	|Last Connection time  |
+| 0067	|Last removal time     |
+
+## USB device Volume Name:
+The device name of the connected drive can be found at the following location:
+```
+SOFTWARE\Microsoft\Windows Portable Devices\Devices
 ```
 
 
