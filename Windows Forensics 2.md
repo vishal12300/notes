@@ -41,3 +41,66 @@ A disk image file is a file that contains a bit-by-bit copy of a disk drive. A b
 
 ## Recovering files using Autopsy
 With that out of the way, let's see how we can recover deleted files from a disk. We will use Autopsy for recovering deleted files. 
+
+
+## Windows Prefetch files
+When a program is run in Windows, it stores its information for future use. This stored information is used to load the program quickly in case of frequent use. This information is stored in prefetch files which are located in the  ``` C:\Windows\Prefetch ```  directory.
+Prefetch files have an extension of ` .pf `. Prefetch files contain the last run times of the application, the number of times the application was run, and any files and device handles used by the file. Thus it forms an excellent source of information about the last executed programs and files.
+##### We can use Prefetch Parser (PECmd.exe) from Eric Zimmerman's tools for parsing Prefetch files and extracting data.
+
+
+## Windows 10 Timeline
+Windows 10 stores recently used applications and files in an SQLite database called the Windows 10 Timeline. This data can be a source of information about the last executed programs. It contains the application that was executed and the focus time of the application. The Windows 10 timeline can be found at the following location:
+```
+C:\Users\<username>\AppData\Local\ConnectedDevicesPlatform\{randomfolder}\ActivitiesCache.db
+```
+##### We can use Eric Zimmerman's WxTCmd.exe for parsing Windows 10 Timeline. We get the following options when we run it:
+
+## Windows Jump Lists
+Windows introduced jump lists to help users go directly to their recently used files from the taskbar. We can view jumplists by right-clicking an application's icon in the taskbar, and it will show us the recently opened files in that application. This data is stored in the following directory:
+```
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations
+```
+Jumplists include information about the applications executed, first time of execution, and last time of execution of the application against an AppID.
+##### We can use Eric Zimmerman's JLECmd.exe to parse Jump Lists. We get the following options when we run it:
+
+
+## Shortcut Files
+Windows creates a shortcut file for each file opened either locally or remotely. The shortcut files contain information about the first and last opened times of the file and the path of the opened file, along with some other data. Shortcut files can be found in the following locations:
+```
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\
+C:\Users\<username>\AppData\Roaming\Microsoft\Office\Recent\
+```
+##### We can use Eric Zimmerman's LECmd.exe (Lnk Explorer) to parse Shortcut files.
+
+## IE/Edge history
+An interesting thing about the IE/Edge browsing history is that it includes files opened in the system as well, whether those files were opened using the browser or not. Hence, a valuable source of information on opened files in a system is the IE/Edge history.
+``` 
+C:\Users\<username>\AppData\Local\Microsoft\Windows\WebCache\WebCacheV*.dat
+```
+The files/folders accessed appear with a ``` file:///* ``` prefix in the IE/Edge history. Though several tools can be used to analyze Web cache data, you can use Autopsy to do so in the attached VM. 
+
+## Jump Lists
+As we already learned in the last task, Jump Lists create a list of the last opened files. This information can be used to identify both the last executed programs and the last opened files in a system. Remembering from the last task, Jump Lists are present at the following location:
+```
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations
+```
+
+## Setupapi dev logs for USB devices
+
+When any new device is attached to a system, information related to the setup of that device is stored in the setupapi.dev.log. This log is present at the following location:
+```
+C:\Windows\inf\setupapi.dev.log
+```
+This log contains the device serial number and the first/last times when the device was connected. 
+
+## Shortcut files
+Shortcut files are created automatically by Windows for files opened locally or remotely. These shortcut files can sometimes provide us with information about connected USB devices. It can provide us with information about the volume name, type, and serial number. Recalling from the previous task, this information can be found at:
+```
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\
+C:\Users\<username>\AppData\Roaming\Microsoft\Office\Recent\
+```
+We can use the Eric Zimmerman's LECmd.exe tool.
+
+
+
