@@ -29,3 +29,8 @@ Afterward, we draw our attention to the email body and attachment(s) (if any).
 * https://www.phishtool.com/ [Automation]
 
 
+## Other Tools
+* https://mxtoolbox.com/
+* https://phishtank.com/?
+* https://www.spamhaus.org/
+
