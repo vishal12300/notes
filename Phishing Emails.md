@@ -75,4 +75,20 @@ An explanation of the above record:
 
 ```p= ```-> This is the public key that will be matched to the private key, which was created during the DKIM setup process. 
 
+## DMARC (Domain-based  Message Authentication Reporting, & Conformance) 
+DMARC, (Domain-based  Message Authentication Reporting, & Conformance) an open source standard, uses a concept called alignment to tie the result of two other open source standards, SPF (a published list of servers that are authorized to send email on behalf of a domain) and DKIM (a tamper-evident domain seal associated with a piece of email), to the content of an email. If not already deployed, putting a DMARC record into place for your domain will give you feedback that will allow you to troubleshoot your SPF and DKIM configurations if needed.
+
+#### How does a basic DMARC record look like?
+```
+v=DMARC1; p=quarantine; rua=mailto:postmaster@website.com 
+```
+
+An explanation of the above record:
+
+ ``` v=DMARC1 ``` -> Must be in all caps, and it's not optional
+
+``` p=quarantine ``` -> If a check fails, then an email will be sent to the spam folder (DMARC Policy)
+
+``` rua=mailto:postmaster@website.com ``` -> Aggregate reports will be sent to this email address
+
 
