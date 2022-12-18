@@ -23,6 +23,7 @@ Ssl.cert.subject.CN:"target.com"
 * GitHub - Cyber-Guy1/domainCollector
 * https://gitlab.com/prawps/ohdns
 
+-----------
 
 # Port Scanning
 
@@ -39,3 +40,61 @@ naabu -list sub-list.txt -top-ports 1000 -exclude-ports 80,443,21,22,25 -o ports
 naabu -list sub-list.txt -p -  -exclude-ports 80,443,21,22,25 -o ports.txt
 
 ```
+
+---------------
+
+# COLLECTING URLS ENDPOINTS
+
+```
+https://urlscan.io/search/#target.com
+https://web.archive.org/cdx/search/cdx?url=*.target.com&fl=original&collapse=urlkey
+
+```
+
+#### Google dorking
+```
+site:target.com
+```
+
+#### Bing dorking
+
+```
+site:target.com
+```
+
+--------------
+
+# SEARCH FOR SOURCES/BACKUP FILES
+
+#### Tip:
+
+```
+orwa.iwcon.com
+orwa.iwcon.com/orwa.zip - iwcon.zip – admin.zip – backup.zip
+orwa. iwcon.com/orwa/orwa.zip - wicon.zip – admin.zip – backup.zip
+orwa. iwcon.com/iwcon/orwa.zip - iwcon.zip – admin.zip – backup.zip
+orwa. iwcon.com/admin/orwa.zip - iwcon.zip – admin.zip – backup.zip
+```
+
+#### Tools
+* https://github.com/musana/fuzzuli
+
+
+------------------
+
+# Credential Leakage and Secret Sisclosure
+
+#### Try Searching For Leakes On 
+```
+gist.github.com
+Gitlab.com
+```
+
+#### Leaked Credentials On Google and In Google Sheets/Groups
+
+```
+site:docs.google.com/spreadsheets "company name“
+site:groups.google.com "company name"
+```
+
+
