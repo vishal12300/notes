@@ -19,5 +19,23 @@ Ssl.cert.subject.CN:"target.com"
 * Subfinder
 * Assetsfinder (tomnomnom)
 * [https://jldc.me/anubis/subdomains/att.com](https://jldc.me/anubis/subdomains/att.com)
+* GitHub - iamthefrogy/frogy
+* GitHub - Cyber-Guy1/domainCollector
+* https://gitlab.com/prawps/ohdns
 
 
+# Port Scanning
+
+#### Tools
+
+* nmap
+* masscan
+* naabu
+
+#### Commands tips
+
+```
+naabu -list sub-list.txt -top-ports 1000 -exclude-ports 80,443,21,22,25 -o ports.txt
+naabu -list sub-list.txt -p -  -exclude-ports 80,443,21,22,25 -o ports.txt
+
+```
