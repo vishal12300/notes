@@ -35,9 +35,16 @@ To generate the AWS credentaisls, we need to find ` Identity Pool ID ` which is 
 
 Next step is to use the Pool Identity ID to generate an Identity ID. User AWS-Cli tool [https://aws.amazon.com/cli/](https://aws.amazon.com/cli/)
 
+
 #### Command
 ```
 aws cognito-identity get-id --identity-pool-id <identity-pool-id> --region <region>
+```
+
+#### Example Command
+```
+aws cognito-identity get-id --identity-pool-id "us-east-1:b37a7b57-6412-467f-8854-2be137e33871" --region us-east-1
+
 ```
 
 
