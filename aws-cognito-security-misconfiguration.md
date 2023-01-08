@@ -75,3 +75,47 @@ You'll need to confirm the account next
 ```
 aws cognito-idp confirm-sign-up --client-id <client-id> --username <email-address> --confirmation-code <confirmation-code> --region <region>
 ```
+
+Sometimes you might successfully be able to sign up and register an account but it doesn't have any user group assigned. However, you will be able to obtain temporary AWS credentials which you can test against liberal permissions as we explained earlier.
+
+## 3: Privilege escalation through writable user attributes
+ 
+Attributes are pieces of information that help you identify individual users, such as name, email address and phone number. A new user pool has a set of default standard attributes.
+You can also add custom attributes to your user pool definition in the AWS management console.
+ 
+Unless set as readable only, the new custom attribute permission is writable by default which allows the user to update its value.
+ 
+ * Fetching user attributes
+In order to test against this misconfiguration, you need to be authenticated then we'll fetch the available user attributes using the generated access token.
+ 
+#### Command
+```
+aws cognito-idp get-user --region <region> --access-token <access-token>
+```
+
+
+Look out for custom attributes such as:
+```
+custom:isAdmin
+custom:userRole
+custom:isActive
+custom:isApproved
+custom:access
+```
+
+* Updating user attributes
+
+#### Command
+```
+aws cognito-idp update-user-attributes --access-token <access-token> --region <region> --user-attributes Name="<attribute-name>",Value="<new-value>"
+```
+
+## 4 Updating email attribute before verification
+ 
+There are scenarios where the user isn't allowed to update their email address due to both client and server-side security controls. However, by leveraging Cognito API, it might also be possible to bypass this restriction.
+ 
+ 
+#### Command
+```
+aws cognito-idp update-user-attributes --access-token <access-token> --region <region> --user-attributes Name="<email>",Value="<new-email-address>"
+```
