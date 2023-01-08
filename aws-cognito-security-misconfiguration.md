@@ -62,7 +62,7 @@ Now we can enumerate permissions associated with these credentials using a tools
 
 #### Command
 ```
-./enumerate-iam.py --access-kry <AccessKeyID> --secret-key <SecreetKey> --session-token <SessionToken>
+./enumerate-iam.py --access-key <AccessKeyID> --secret-key <SecreetKey> --session-token <SessionToken>
 ```
 
 ## 2. Authentication bypass due to enabled SignUp API action
