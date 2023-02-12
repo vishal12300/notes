@@ -97,4 +97,20 @@ site:docs.google.com/spreadsheets "company name“
 site:groups.google.com "company name"
 ```
 
+#### Cloud Storage Dorks
+```
+site:s3.amazonaws.com "example.com"
+site:blob.core.windows.net "example.com"
+site:googleapis.com "example.com"
+site:drive.google.com "example.com"
+```
 
+#### XSS Dorks
+```
+inurl:q= | inurl:s= | inurl:search= | inurl:query= inurl:& site:example.com
+```
+
+#### Open Redirect Dorks
+```
+inurl:url= | inurl:return= | inurl:next= | inurl:redir= inurl:http site:example.com
+```
