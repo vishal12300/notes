@@ -1,5 +1,6 @@
 Credit: Yassine Aboukir @yassineboukir
 
+AWS Cognito Documentation [https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/index.html#cli-aws-cognito-idp](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/index.html#cli-aws-cognito-idp)
 
 # Amazon Cognito Security Misconfiguration
 
