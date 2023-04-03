@@ -25,7 +25,7 @@ SMUGGLED
 
 ```
 POST / HTTP/1.1
-Host: 0a2300b804b853f580aa493c0046000d.web-security-academy.net
+Host: xxxx.web-security-academy.net
 Accept-Encoding: gzip, deflate
 Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
 Content-Type: application/x-www-form-urlencoded
