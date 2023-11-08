@@ -114,3 +114,11 @@ inurl:q= | inurl:s= | inurl:search= | inurl:query= inurl:& site:example.com
 ```
 inurl:url= | inurl:return= | inurl:next= | inurl:redir= inurl:http site:example.com
 ```
+
+#### Oneliner Collect web archive URls.
+```
+cat ./subdomain.txt | while read line;
+do;
+curl "https://web.archive.org/cdx/search/cdx?url=http://$line/&matchType=domain&fl=original&collapse=urlkey&output=text&filter=statuscode:200" -o $RANDOM_$line.txt
+done;
+```
