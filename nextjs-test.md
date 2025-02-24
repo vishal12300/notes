@@ -26,4 +26,15 @@ Priority: u=0, i
 x-now-route-matches: 1
 ```
 
+## Try this headers in the request and Observer the Changes in the Response headers. 
+
+```
+X-middleware-prefetch: 1
+```
+
+```
+RSC: 1
+```
+
+
 ------------------------------
