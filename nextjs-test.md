@@ -38,3 +38,7 @@ RSC: 1
 
 
 ------------------------------
+
+## SSRF 
+
+[https://www.assetnote.io/resources/research/digging-for-ssrf-in-nextjs-apps](https://www.assetnote.io/resources/research/digging-for-ssrf-in-nextjs-apps)
