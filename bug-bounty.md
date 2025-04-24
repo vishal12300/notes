@@ -122,3 +122,12 @@ do;
 curl "https://web.archive.org/cdx/search/cdx?url=http://$line/&matchType=domain&fl=original&collapse=urlkey&output=text&filter=statuscode:200" -o $RANDOM_$line.txt
 done;
 ```
+
+
+-----
+
+### Wordpress Scan
+
+```
+wpscan --url https://site.com/ --disable-tls-checks --api-token <here> -e at -e ap -e u --enumerate ap --plugins-detection aggressive --force
+```
