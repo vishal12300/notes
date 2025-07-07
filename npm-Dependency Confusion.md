@@ -35,8 +35,8 @@ package.json
   },
   "author": "orwa",
   "license": "ISC"
-  }
-}
+ }
+
 ```
 
 index.js 
