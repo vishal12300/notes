@@ -27,4 +27,31 @@ accept: */*
 accept-language: *
 sec-fetch-mode: cors
 accept-encoding: gzip, deflate
+Host: attacker.example.test
+X-Forwarded-Host: attacker.example.test
+X-Forwarded-For: 203.0.113.45
+X-Forwarded-Proto: https
+X-Url-Scheme: https
+X-Forwarded-Scheme: https
+Forwarded: host=attacker.example.test;proto=https
+X-Forwarded-Port: 443
+X-Forwarded-Prefix: /prefix
+X-Original-URL: /some/original/path?x=1
+X-Rewrite-URL: /rewritten/path
+X-Original-Host: attacker.example.test
+X-ProxyHost: attacker.example.test
+X-Host: attacker.example.test
+X-Forwarded-Server: proxy-01.example.net
+X-Real-IP: 203.0.113.45
+X-Original-URI: /original/uri
+X-Forwarded-Uri: /forwarded/uri
+X-Request-Uri: /request/uri
+Referer: https: //attacker.example.test/page
+Origin: https: //attacker.example.test
+Cookie: session=TESTSESSIONID;other=1
+Authorization: BearerTEST_TOKEN
+X-Requested-With: XMLHttpRequest
+Accept: application/json
+Accept-Encoding: gzip,deflate
+Accept-Language: en-US,en;q=0.9
 ```
