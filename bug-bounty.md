@@ -62,6 +62,17 @@ site:target.com
 site:target.com
 ```
 
+---------------------------
+
+#### Check live host with top 20 HTTP ports
+
+```
+cat subdomains.txt | httpx -p 80,443,8080,8081,8443,8888,8000,8008,81,82,3000,7001,9000,5000,9443,10000,10443,20000,5800,6543 -title -status-code -content-length -follow-redirects -no-color -o result_live_host.txt
+
+
+httpx -p 80,443,8080,8081,8443,8888,8000,8008,81,82,3000,7001,9000,5000,9443,10000,10443,20000,5800,6543 -title -status-code -content-length -follow-redirects -no-color
+```
+
 --------------
 
 # SEARCH FOR SOURCES/BACKUP FILES
