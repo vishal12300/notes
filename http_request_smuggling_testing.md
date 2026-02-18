@@ -1,6 +1,30 @@
 # HTTP Request smuggling Test
 **The most generally effective way to detect HTTP request smuggling vulnerabilities is to send requests that will cause a time delay in the application's responses if a vulnerability is present. This technique is used by Burp Scanner to automate the detection of request smuggling vulnerabilities.**
 
+####  Content-Length and Transfer-Encoding headers, which indicate the end of a request body
+
+* **Content-Length (CL)** 
+* **Transfer-Encoding (TE)**
+
+
+---------------------------
+
+Transfer-Encoding Header
+The Transfer-Encoding header is used to specify the form of encoding applied to the message body of an HTTP request or response. A commonly used value for this header is "chunked", indicating that the message body is divided into a series of chunks, each preceded by its size in hexadecimal format. Other possible values for the Transfer-Encoding header include "compress", "deflate", and "gzip", each indicating a different type of encoding. For example:
+
+```http
+POST /submit HTTP/1.1
+Host: good.com
+Content-Type: application/x-www-form-urlencoded
+Transfer-Encoding: chunked
+    
+b
+q=smuggledData 
+0
+```
+In this example, "b" (in hexadecimal, equivalent to 11 in decimal) specifies the size of the following chunk. The chunk q=smuggledData is the actual data, followed by a new line. The request is terminated with a "0" line, indicating the end of the message body. Each chunk size is given in hexadecimal format, and the end of the chunked body is signified by a chunk of size 0.
+
+
 ------
 
 ### headers
